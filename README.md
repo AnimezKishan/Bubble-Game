@@ -1,2 +1,8 @@
 # Bubble-Game
-Bubble Game is a game made using HTML, CSS, and JavaScript.
+<> with 🧡 using HTML, CSS and JavaScript.
+
+Reference - [Sheryians Coding School](https://www.youtube.com/@thesheryianscodingschool/)
+
+
+# Version 1.0
+
