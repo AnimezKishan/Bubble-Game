@@ -74,14 +74,3 @@ document.querySelector("#pBottom").addEventListener("click", function (details) 
     increaseScore();
   }
 });
-
-
-function bubbleClickHandler(details){
-  var clicked = Number(details.target.textContent);
-    if(clicked == hitrn)
-    {
-      setNewHit();
-      makeBubble();
-      increaseScore();
-    }
-}
