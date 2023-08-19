@@ -13,6 +13,9 @@ let maxScore = 0;
 resetGame.disabled = true;
 //To generate bubbles
 function makeBubble() {
+var timeInterval = 0;
+
+function makeBubble(){
   var clutter = "";
 
   for (var i = 0; i < 147; i++) {
@@ -34,6 +37,19 @@ function runTimmer() {
         "#pBottom"
       ).innerHTML = `<h1>Game Over!</h1><h2>You Scored ${score} Points.</h2>`;
       setMaxScore(score);
+var timer = 60;
+function runTimmer()
+{
+  clearInterval(timeInterval);
+   timerInterval = setInterval(function(){
+    if(timer > 0){
+      timer--;
+      document.querySelector("#timerVal").textContent = timer;
+    }
+    else{
+      clearInterval(timerInterval);
+      document.querySelector("#pBottom").innerHTML =
+      `<h1>Game Over!</h1><h2>You Scored ${score} Points.</h2>`;
       timer = 60;
       score = 0;
       startGame.disabled = false;
@@ -54,7 +70,6 @@ function increaseScore() {
   score += 10;
   document.querySelector("#scoreVal").textContent = score;
 }
-
 //this functions increase the timer by given seconds
 const increaseTimer = (timerAmount) => {
   if (timer + timerAmount > 60) {
@@ -140,4 +155,35 @@ document.querySelector("#startGame").addEventListener("click", function () {
 
 document.querySelector("#resetGame").addEventListener("click", function () {
   location.reload();
+document.querySelector("#startGame").addEventListener("click", function () {
+  var startButton = document.querySelector("#startGame");
+
+  if (startButton.textContent === "Start Game") {
+    runTimmer();
+    makeBubble();
+    setNewHit();
+
+    startButton.textContent = "Reset Game";
+  } else {
+    clearInterval(timerInterval);
+    document.querySelector("#pBottom").innerHTML = "";
+    document.querySelector("#timerVal").textContent = "60";
+    document.querySelector("#scoreVal").textContent = "0";
+    document.querySelector("#hitVal").textContent = "0";
+    score = 0;
+    hitrn = 0;
+
+    runTimmer();
+    makeBubble();
+    setNewHit();
+  }
+});
+
+document.querySelector("#pBottom").addEventListener("click", function (details) {
+  var clicked = Number(details.target.textContent);
+  if (clicked === hitrn) {
+    setNewHit();
+    makeBubble();
+    increaseScore();
+  }
 });
