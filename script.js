@@ -1,14 +1,12 @@
 //This section is assigned to create const varaibles and varibales
 const startGame = document.getElementById("startGame");
 const resetGame = document.getElementById("resetGame");
-const maxScoreVal = document.getElementById("maxScoreVal");
 const scoreVal = document.getElementById("scoreVal");
 const hitVal = document.getElementById("hitVal");
 var timer = 60;
 var hitrn = 0;
 var score = 0;
 let resetTimer = 10;
-let maxScore = 0;
 //end variable section
 resetGame.disabled = true;
 //To generate bubbles
@@ -36,7 +34,6 @@ function runTimmer() {
       document.querySelector(
         "#pBottom"
       ).innerHTML = `<h1>Game Over!</h1><h2>You Scored ${score} Points.</h2>`;
-      setMaxScore(score);
 var timer = 60;
 function runTimmer()
 {
@@ -116,13 +113,6 @@ const timeGivenToClickBubble = () => {
 //this will reset the resettimer variable.
 const resetTimerdefault = () => {
   resetTimer = 10;
-};
-
-const setMaxScore = (value) => {
-  if (value > maxScore) {
-    maxScore = value;
-  }
-  maxScoreVal.textContent = maxScore;
 };
 
 document.querySelector("#startGame").addEventListener("click", function () {
